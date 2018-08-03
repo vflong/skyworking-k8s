@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+  generation: 1
+  labels:
+    app: skywalking
+    tier: backend
+  name: skywalking
+  namespace: monitoring
+  selfLink: /apis/extensions/v1beta1/namespaces/monitoring/ingresses/skywalking
+spec:
+  rules:
+  - host: skywalking.lifesense.com
+    http:
+      paths:
+      - backend:
+          serviceName: skywalking
+          servicePort: 8080
+  tls:
+  - hosts:
+    - skywalking.lifesense.com
+    secretName: lifesense
