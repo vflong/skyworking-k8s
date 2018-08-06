@@ -26,8 +26,10 @@ spec:
             cpu: 1000m
             memory: 4096Mi
         ports:
-        - containerPort: 8080
-        - containerPort: 10800
+        - name: web
+          containerPort: 8080
+        - name: api
+          containerPort: 10800
         volumeMounts:
           - name: "datadir"
             mountPath: "/data/es/data"
